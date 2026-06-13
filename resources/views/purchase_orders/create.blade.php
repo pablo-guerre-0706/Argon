@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="order_number">Numero de orden:</label>
+                        <label for="order_number">Número de orden:</label>
                         <input type="text" name="order_number" id="order_number" class="form-control" placeholder="Ej: OC-0001" required>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -39,8 +39,8 @@
                             <td>
                                 <select name="raw_material_id[]" class="form-control" required>
                                     <option value="">Seleccione ingrediente...</option>
-                                    @foreach ($RawMaterial as $material)
-                                        <option value="{{ $material->id }}">{{ $material->name }}</option>
+                                    @foreach ($raw_materials as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                     <option value="1">Harina de trigo</option>
                                     <option value="2">Levadura seca</option>
@@ -56,7 +56,12 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="btn btn-success">Guardar orden de compra</button>
+                    <a href="{{ route('dashboard') }}" class="btn btn-secondary mr-2" wire:navigate>
+                        Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        Guardar orden de compra
+                    </button>
                 </div>
             </div>
         </div>

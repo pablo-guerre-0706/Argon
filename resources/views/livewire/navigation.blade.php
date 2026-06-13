@@ -66,6 +66,18 @@
     <!-- Divider -->
     <hr class="my-3">
     <!-- Heading -->
+    <h6 class=" navbar-heading text-muted">Control de Panadería</h6>
+    <!-- Navigation -->
+    <ul class="navbar-nav mb-md-3">
+        <li class="nav-item {{ Request::route()->named('purchase-orders.create') ? 'active' : '' }}">
+            <a class="nav-link {{ Request::route()->named('purchase-orders.create') ? 'active' : ''}}"
+                href="{{ url('purchase-orders/create') }}" wire:navigate>
+                    <i class="fas fa-shopping-cart text-info"></i>Ordenes de compra
+            </a>
+        </li>
+    </ul>
+    <hr class="my-3">
+    <!-- Heading -->
     <h6 class="navbar-heading text-muted">Ejemplos</h6>
     <!-- Navigation -->
     <ul class="navbar-nav mb-md-3">
