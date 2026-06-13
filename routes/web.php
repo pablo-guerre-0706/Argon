@@ -7,6 +7,8 @@ use App\Http\Controllers\Example\ProductController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CarrerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseOrderController;
+use App\Http\Controllers\PurchaseOrderDetailController;
 use App\Livewire\Products\ProductList;
 use Illuminate\Support\Facades\Route;
 
@@ -69,9 +71,15 @@ Route::middleware('auth')->group(function () {
     //rutas de posts de tipo resource
     Route::resource('/students', StudentController::class);
     Route::resource('/carrers', CarrerController::class);
-
+    
     // Route::resource('/categories', CategoryController::class);
     // Route::resource('/animals', AnimalController::class);
+
+    // Rutas de Panaderia (compras)
+    Route::resource('/purchase-orders', PurchaseOrderController::class)->only(['index', 'create', 'store', 'show']);
+    Route::post('/purchase-order-details', [PurchaseOrderDetailController::class, 'store']);
+
 });
+
 
 require __DIR__ . '/auth.php';

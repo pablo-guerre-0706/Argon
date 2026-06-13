@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\PurchaseOrder;
 use App\Http\Requests\PurchaseOrderRequest;
 use App\Models\Supplier;
+use App\Models\RawMaterial;
+use App\Models\UnitMeasure;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -18,7 +21,9 @@ class PurchaseOrderController extends Controller
 
     public function create(): View
     {
-        return view('purchase_orders.create');
+        $suppliers = Supplier::all();
+        $raw_materials = RawMaterial::all();
+        return view('purchase_orders.create', compact('suppliers', 'raw_materials'));
     }
 
     public function store(PurchaseOrderRequest $request): RedirectResponse
