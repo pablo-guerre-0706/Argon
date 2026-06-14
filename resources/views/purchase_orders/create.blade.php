@@ -55,13 +55,13 @@
                     <tbody id="tabla_materia_prima">
                         <tr>
                             <td>
-                                <select name="raw_material_id[]" class="form-control form-control-alternative form-control-sm w-100" required>
+                                <select name="raw_material_id[]" class="form-control form-control-alternative form-control-sm w-100 class_select_materia" required>
                                     <option value="">Seleccione...</option>
-                                    @foreach ($raw_materials as $item)>
+                                    @foreach ($raw_materials as $item)
                                         <option value="{{ $item->id}}"
-                                                data-price="{{ $item->purchase_price }}"
-                                                data-bar_code="{{ $item->bar_code }}"
-                                                data-weight="{{ $item->weigth }}">
+                                                data-price="42.50"
+                                                data-bar_code="270027002700{{ $item->id }}"
+                                                data-weight="1.000">
                                             {{ $item->name }}
                                         </option>
                                     @endforeach

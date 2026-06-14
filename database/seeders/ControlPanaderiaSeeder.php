@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use League\CommonMark\Extension\DescriptionList\Node\Description;
 
 class ControlPanaderiaSeeder extends Seeder
 {
@@ -39,7 +40,7 @@ class ControlPanaderiaSeeder extends Seeder
 
         // brands (Marcas de materias primas)
         DB::table('brands')->insertOrIgnore([
-            ['name' => 'King Artur Baking', 'description' => 'Harina de trigo de fuerza', 'origin' => 'EEUU'],
+            ['name' => 'King Artur Baking', 'description' => 'Trigo de fuerza', 'origin' => 'EEUU'],
             ['name' => 'Caputo', 'description' => 'Molida para proteger almidones, panes, pizzas', 'origin' => 'Italia'],
             ['name' => 'Tradicional Zamora', 'description' => 'Molida en piedra, conserva germen del trigo', 'origin' => 'Espana'],
             ['name' => 'Saf-Instant', 'description' => 'Seca, no hidratacion previa, masas dulces', 'origin' => 'Francia'],
@@ -47,12 +48,17 @@ class ControlPanaderiaSeeder extends Seeder
             ['name' => 'Ibis', 'description' => 'Mejoradores y acondicionadores de masa', 'origin' => 'Francia'],
             ['name' => 'Maseca', 'description' => 'Seca, elemento acompañador de volumen', 'origin' => 'Nacional'],
             ['name' => 'La Unica', 'description' => 'Grasa vegetal, imita a la mantequilla trad.', 'origin' => 'Guatemala'],
-            ['name' => 'Anchor', 'description' => 'Alta calidad microbiologica', 'origin' => 'Nueva Zelanda'],
-            ['name' => 'LTSA', 'description' => 'frutas texturizadas', 'origin' => 'Costa Rica']
+            ['name' => 'Anchor', 'description' => 'Alta calidad microbiológica', 'origin' => 'Nueva Zelanda'],
+            ['name' => 'LTSA', 'description' => 'frutas texturizadas', 'origin' => 'Costa Rica'],
+            ['name' => 'Chontaleña', 'description' => 'Masa, alta calidad microbiológica', 'origin' => 'Nicaragua'],
+            ['name' => 'Tio Pelón', 'description' => 'Entera, conserva germen del trigo', 'origin' => 'Nicaragua'],
+            ['name' => 'El Norteño', 'Description' => 'Natural, de amor', 'origin' => 'Nicaragua'],
+            ['name' => 'El Norteño', 'description' => 'Granja, primera calidad', 'origin' => 'Nicaragua']
         ]);
 
+        // raw_materials (Nombres de materia prima)
         DB::table('raw_materials')->insertOrIgnore([
-            ['name' => 'Harina de reposteria'],
+            ['name' => 'Harina de repostería'],
             ['name' => 'Harina de trigo'],
             ['name' => 'Levadura fresca'],
             ['name' => 'Levadura seca'],
@@ -60,11 +66,11 @@ class ControlPanaderiaSeeder extends Seeder
             ['name' => 'Bicarbonato de sodio'],
             ['name' => 'Maicena'],
             ['name' => 'Cremor tartaro'],
-            ['name' => 'Azucar blanca'],
-            ['name' => 'Azucar glass'],
+            ['name' => 'Azúcar blanca'],
+            ['name' => 'Azúcar glass'],
             ['name' => 'Miel de abeja'],
             ['name' => 'Miel de maiz'],
-            ['name' => 'Leche entera liquida'],
+            ['name' => 'Leche entera líquida'],
             ['name' => 'Leche entera en polvo'],
             ['name' => 'Chantilly'],
             ['name' => 'Mantequilla'],
@@ -77,7 +83,7 @@ class ControlPanaderiaSeeder extends Seeder
             ['name' => 'Crema pastelera'],
             ['name' =>'Almibar'],
             ['name' =>'Esencia de vainilla'],
-            ['name' => 'Extracto de limon'],
+            ['name' => 'Extracto de limón'],
             ['name' => 'Mejorante de masa'],
             ['name' => 'Emulsiones'],
             ['name' => 'Conservante']
