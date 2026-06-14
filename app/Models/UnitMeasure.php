@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UnitMeasure extends Model
 {
-    protected $fillable = [
-        'name',
-        'type',
-        'abbreviation'
-    ];
+    protected $table = 'units_measures';
+
+    protected $fillable = ['name', 'type', 'abbreviation'];
 
     public function raw_materials() : HasMany{
         return $this->hasMany(RawMaterial::class);

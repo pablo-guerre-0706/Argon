@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CategoryMat extends Model
 {
+    protected $table = 'categories_mat';
     protected $fillable = [
         'name',
         'description',

@@ -6,7 +6,9 @@ use App\Models\PurchaseOrder;
 use App\Http\Requests\PurchaseOrderRequest;
 use App\Models\Supplier;
 use App\Models\RawMaterial;
+use App\Models\Brand;
 use App\Models\UnitMeasure;
+use App\Models\CategoryMat;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -23,7 +25,16 @@ class PurchaseOrderController extends Controller
     {
         $suppliers = Supplier::all();
         $raw_materials = RawMaterial::all();
-        return view('purchase_orders.create', compact('suppliers', 'raw_materials'));
+        $brands = Brand::all();
+        $units_measures = UnitMeasure::all();
+        $categories_mat = CategoryMat::all();
+        return view('purchase_orders.create', compact(
+            'suppliers',
+            'raw_materials',
+            'brands',
+            'units_measures',
+            'categories_mat'
+        ));
     }
 
     public function store(PurchaseOrderRequest $request): RedirectResponse
