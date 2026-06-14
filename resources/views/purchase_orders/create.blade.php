@@ -31,6 +31,12 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex justify-content-between align items-center mb-2">
+            <h5 class="text-dark font-weight-bold mb-0 small text-uppercase">Listado de materia prima</h5>
+            <button type="button" class="btn btn-info btn-sm mb-0 py-1" id="btn_agregar_insumo">
+                <i class="fas fa-plus"></i>Añadir materia prima
+            </button>
+        </div>
         <div class="card shadow-sm">
             <div class="card-header bg-secondary text-white py-2">Detalle de ingredientes a comprar</div>
             <div class="card-body px-2 py-2">
@@ -43,15 +49,21 @@
                             <th style="width: 17%;">Categoría</th>
                             <th style="width: 15%;">Cantidad</th>
                             <th style="width: 15%;">C. unitario</th>
+                            <th style="width: 4%;">
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabla_materia_prima">
                         <tr>
                             <td>
                                 <select name="raw_material_id[]" class="form-control form-control-alternative form-control-sm w-100" required>
-                                    <option value="">Seleccione ingrediente...</option>
+                                    <option value="">Seleccione...</option>
                                     @foreach ($raw_materials as $item)>
-                                        <option value="{{ $item->id}}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id}}"
+                                                data-price="{{ $item->purchase_price }}"
+                                                data-bar_code="{{ $item->bar_code }}"
+                                                data-weight="{{ $item->weigth }}">
+                                            {{ $item->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </td>
@@ -84,6 +96,11 @@
                             </td>
                             <td>
                                 <input type="number" step="0.01" name="unit_cost[]"" class="form-control form-control-alternative form-control-sm text-right" placeholder="0.01" required>
+                            </td>
+                            <td class="text-center align-middle">
+                                <button type="button" class="btn btn-link text-danger p-0 m-0 btn_eliminar_fila" style="display: none;">
+                                    <i class="fas fap-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -119,21 +136,47 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $(document).on('input', 'input[name="ordered_quantity[]"], input[name="unit_cost[]"]', function(){
-            let subtotal = 0;
-            $('table tbody tr').each(function() {
-                let qty = parseFloat($(this).find('input[name="ordered_quantity[]"]').val()) || 0;
-                let cost = parseFloat($(this).find('input[name="unit_cost[]"]').val()) || 0;
-                subtotal += qty * cost;
-            });
-            let tax = subtotal * 0.15;
-            let total = subtotal + tax;
-
-            $('#txt_subtotal').text(subtotal.toFixed(2));
-            $('#txt_tax').text(tax.toFixed(2));
-            $('#txt_total').text(total.toFixed(2));
-        });
+$(document).ready(function() {
+    $('#btn_agregar_materia_prima').on('click', function() {
+        let nuevaFila = $('#tabla_materia_prima tr:first').clone();
+        nuevaFila.find('input').val('');
+        nuevaFila.find('select').val('');
+        nuevaFila.find('.btn_eliminar_fila').show();
+        $('#tabla_materia_prima').append(nuevaFila);
     });
+
+    $(document).on('click', '.btn_eliminar_fila', function() {
+        $(this).closest('tr').remove();
+        calcularTotales();
+    });
+
+    $(document).on('change', '.class_select_materia', function() {
+        let optionSeleccionada = $(this).find('option:selected');
+        let precioSugerido = optionSeleccionada.data('precio') || '0';
+        let filaActual = $(this).closest('tr');
+        filaActual.find('input[name="unit_cost[]"]').val(precioSugerido);
+        calcularTotales();
+    });
+        
+    $(document).on('input', 'input[name="ordered_quantity[]"], input[name="unit_cost[]"]', function(){
+        calcularTotales();
+    });
+
+    function calcularTotales() {
+        let subtotal = 0;
+        $('#tabla_materia_prima tr').each(function() {
+            let qty = parseFloat($(this).find('input[name="ordered_quantity[]"]').val()) || 0;
+            let cost = parseFloat($(this).find('input[name="unit_cost[]"]').val()) || 0;
+            subtotal += qty * cost;
+        });
+        
+        let tax = subtotal * 0.15;
+        let total = subtotal + tax;
+
+        $('#txt_subtotal').text(subtotal.toFixed(2));
+        $('#txt_tax').text(tax.toFixed(2));
+        $('#txt_total').text(total.toFixed(2));
+    };
+});
 </script>
 @endsection

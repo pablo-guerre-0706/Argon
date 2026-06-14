@@ -50,6 +50,38 @@ class ControlPanaderiaSeeder extends Seeder
             ['name' => 'Anchor', 'description' => 'Alta calidad microbiologica', 'origin' => 'Nueva Zelanda'],
             ['name' => 'LTSA', 'description' => 'frutas texturizadas', 'origin' => 'Costa Rica']
         ]);
+
+        DB::table('raw_materials')->insertOrIgnore([
+            ['name' => 'Harina de reposteria'],
+            ['name' => 'Harina de trigo'],
+            ['name' => 'Levadura fresca'],
+            ['name' => 'Levadura seca'],
+            ['name' => 'Royal'],
+            ['name' => 'Bicarbonato de sodio'],
+            ['name' => 'Maicena'],
+            ['name' => 'Cremor tartaro'],
+            ['name' => 'Azucar blanca'],
+            ['name' => 'Azucar glass'],
+            ['name' => 'Miel de abeja'],
+            ['name' => 'Miel de maiz'],
+            ['name' => 'Leche entera liquida'],
+            ['name' => 'Leche entera en polvo'],
+            ['name' => 'Chantilly'],
+            ['name' => 'Mantequilla'],
+            ['name' => 'Margarina'],
+            ['name' => 'Huevo'],
+            ['name' => 'Agua'],
+            ['name' => 'Aceite vegetal'],
+            ['name' => 'Relleno de chocolate'],
+            ['name' => 'Relleno de tres leches'],
+            ['name' => 'Crema pastelera'],
+            ['name' =>'Almibar'],
+            ['name' =>'Esencia de vainilla'],
+            ['name' => 'Extracto de limon'],
+            ['name' => 'Mejorante de masa'],
+            ['name' => 'Emulsiones'],
+            ['name' => 'Conservante']
+        ]);
     }
 }
 
