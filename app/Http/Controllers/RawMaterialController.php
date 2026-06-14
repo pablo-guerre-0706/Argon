@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RawMaterial;
+use App\Models\Brand;
+use App\Models\UnitMeasure;
+use App\Models\CategoryMat;
+use Illuminate\Http\Request;
 use App\Http\Requests\RawMaterialRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -11,13 +15,16 @@ class RawMaterialController extends Controller
 {
     public function index(): View
     {
-        $raw_materials = RawMaterial::all();
+        $raw_materials = RawMaterial::with(['brand', 'unit_measure', 'category_mat'])->paginate(15);
         return view('raw_materials.index', compact('raw_materials'));
     }
 
     public function create(): View
     {
-        return view('raw_materials.create');
+        $brands = Brand::all();
+        $units_measures = UnitMeasure::all();
+        $categories_mat = CategoryMat::all();
+        return view('raw_materials.create', compact('brands', 'units_measures', 'categories_mat'));
     }
 
     public function store(RawMaterialRequest $request): RedirectResponse

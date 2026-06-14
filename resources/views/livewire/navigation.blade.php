@@ -74,6 +74,12 @@
                     <i class="fas fa-shopping-cart text-info"></i>Ordenes de compra
             </a>
         </li>
+        <li class="nav-item {{ Request::route()->named('raw-materials.*') ? 'active' : ''}}">
+            <a class="nav-link {{ Request::route()->named('raw-materials.*') ? 'active' : ''}}"
+                href="{{ route('raw-materials.index') }}" wire:navigate>
+                <i class="fas fa-boxes text-warning"></i>Catálogo de materias primas
+            </a>
+        </li>
     </ul>
     <hr class="my-3">
     <!-- Heading -->
