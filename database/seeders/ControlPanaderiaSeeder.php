@@ -14,17 +14,114 @@ class ControlPanaderiaSeeder extends Seeder
      */
     public function run(): void
     {
-   // Datos de las tablas maestras que ==> raw_materials
+        // suppliers (Proveedores)
+        DB::table('suppliers')->insertOrIgnore([
+            [
+                'name' => 'Molinos de Nicaragua S.A.', 
+                'status' => 'active', 
+                'phone' => '+505 2233-4455', 
+                'email' => 'ventas@molinosnic.com', 
+                'address' => 'Km 4.5 Carretera Norte, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Distribuidora La Levadura Oro', 
+                'status' => 'active', 
+                'phone' => '+505 8888-1122', 
+                'email' => 'pedidos@levaduraoro.com', 
+                'address' => 'De los semáforos de la cancillería 2 cuadras al lago, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Lácteos El Cortijo', 
+                'status' => 'active', 
+                'phone' => '+505 2277-9900', 
+                'email' => 'contacto@elcortijo.com', 
+                'address' => 'Frente a la delegación policial del Distrito 5, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'PATRY', 
+                'status' => 'active', 
+                'phone' => '+505 8220-1010', 
+                'email' => 'comercializacion@patry.com', 
+                'address' => 'De donde fue COMMEMA 1 cuadra al este, Módulo C-111, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'SprinKles', 
+                'status' => 'active', 
+                'phone' => '+505 8545-1620', 
+                'email' => 'sprinklesnic@gmail.com', 
+                'address' => 'Semáforos de Rubenia 2 cuadras abajo, frente a SINSA, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Distribuidora Industrial', 
+                'status' => 'active', 
+                'phone' => '+505 8433-3000',
+                'email' => 'diinsa@gmail.com', 
+                'address' => 'Mercado Oriental, de la iglesia El Calvario 5 cuadras abajo, Managua',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Distribuidora El Quesito', 
+                'status' => 'active', 
+                'phone' => '+505 8539-4006', 
+                'email' => 'elquesitoesteli@gmail.com', 
+                'address' => 'Frente al Pali, calle central, Estelí',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Insumos Sébaco', 
+                'status' => 'active', 
+                'phone' => '+505 8679-6949', 
+                'email' => 'insumossebaco@gmail.com', 
+                'address' => 'Frente a la Comunidad Indigena, salida a Matagalpa, Sébaco',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Distribuidora Quimica Nicaragua', 
+                'status' => 'active', 
+                'phone' => '+505 8614-2210', 
+                'email' => 'disquin@gmail.com', 
+                'address' => 'Frente al Hospital San Juan de Dios, Estelí',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Distribuidora Esteliana', 
+                'status' => 'active', 
+                'phone' => '+505 812-1992',
+                'email' => 'Disesteliana@gmail.com', 
+                'address' => 'Frente a Shell Esquipulas, Estelí',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
+
         // units_measures (Unidades de medida)
         DB::table('units_measures')->insertOrIgnore([
             ['name' => 'Kilogramo', 'type' => 'Peso', 'abbreviation' => 'kg'],
+            ['name' => 'Gramo', 'type' => 'Peso', 'abbreviation' => 'g'],
             ['name' => 'Libra', 'type' => 'Peso', 'abbreviation' => 'lb'],
             ['name' => 'Onza', 'type' => 'Peso', 'abbreviation' => 'on'],
             ['name' => 'Quintal', 'type' => 'Peso', 'abbreviation' => 'qq'],
             ['name' => 'Litro', 'type' => 'Volumen', 'abbreviation' => 'lt'],
             ['name' => 'Galon', 'type' => 'Volumen', 'abbreviation' => 'gl'],
             ['name' => 'Cuchara', 'type' => 'Cocina', 'abbreviation' => 'cda'],
-            ['name' => 'pizca', 'type' => 'Cocina', 'abbreviation' => 'pz']
+            ['name' => 'pizca', 'type' => 'Cocina', 'abbreviation' => 'pz'],
+            ['name' => 'Unidad', 'type' => 'Cantidad', 'abbreviation' => 'u'],
+            ['name' => 'Decena', 'type' => 'Cantidad', 'abbreviation' => 'd'],
+            ['name' => 'Centenar', 'type' => 'cantidad', 'abbreviation' => 'c']
         ]);
 
         // categories_mat (Categoría de materias prima)
@@ -52,7 +149,7 @@ class ControlPanaderiaSeeder extends Seeder
             ['name' => 'LTSA', 'description' => 'frutas texturizadas', 'origin' => 'Costa Rica'],
             ['name' => 'Chontaleña', 'description' => 'Masa, alta calidad microbiológica', 'origin' => 'Nicaragua'],
             ['name' => 'Tio Pelón', 'description' => 'Entera, conserva germen del trigo', 'origin' => 'Nicaragua'],
-            ['name' => 'El Norteño', 'descriphpption' => 'Natural, de amor', 'origin' => 'Nicaragua'],
+            ['name' => 'El Norteño', 'description' => 'Natural, de amor', 'origin' => 'Nicaragua'],
             ['name' => 'El Norteño', 'description' => 'Granja, primera calidad', 'origin' => 'Nicaragua']
         ]);
 

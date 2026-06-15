@@ -34,12 +34,12 @@ class SupplierRequest extends FormRequest
                 'required',
                 Rule::in(['active','inactive'])
             ],
-            'address' => ['required', 'string', 'min:5','max:50'],
+            'address' => ['required', 'string', 'min:5','max:255'],
             'phone' => ['required', 'string', 'max:15'],
             'email' => [
                 'required', 
                 'email',
-                'max:30',
+                'max:100',
                 Rule::unique('suppliers','email')->ignore($this->route('supplier'))
             ]
         ];
