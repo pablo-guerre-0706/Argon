@@ -12,7 +12,7 @@ class PurchaseOrderDetailController extends Controller
     {
         PurchaseOrderDetail::create($request->validated());
         return redirect()->route('purchase_order_details.show', $request->purchase_order_id)
-            ->with('success', 'Materia prima agregada a la orden de compra con éxito.');
+            ->with('success', 'Materia prima agregada a la orden con éxito.');
     }
 
     public function destroy(PurchaseOrderDetail $purchase_order_detail): RedirectResponse

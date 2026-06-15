@@ -38,7 +38,16 @@ class PurchaseOrderRequest extends FormRequest
                 Rule::in(['generated', 'sent', 'suspended', 'canceled'])
             ],
             'user_id' => ['required', 'exists:users,id'],
-            'supplier_id' => ['required', 'exists:suppliers,id']
+            'supplier_id' => ['required', 'exists:suppliers,id'],
+
+            'raw_material_id'   => ['required', 'array', 'min:1'],
+            'raw_material_id.*' => ['required', 'exists:raw_materials,id'],
+            
+            'ordered_quantity'   => ['required', 'array', 'min:1'],
+            'ordered_quantity.*' => ['required', 'numeric', 'min:0.001'],
+            
+            'unit_cost'   => ['required', 'array', 'min:1'],
+            'unit_cost.*' => ['required', 'numeric', 'min:0.01']
         ];
     }
 }

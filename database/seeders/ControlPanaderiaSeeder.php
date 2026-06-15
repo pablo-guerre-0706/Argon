@@ -58,8 +58,8 @@ class ControlPanaderiaSeeder extends Seeder
 
         // raw_materials (Nombres de materia prima)
         DB::table('raw_materials')->insertOrIgnore([
-            ['name' => 'Harina de repostería', 'bar_code' => '27003'],
-            ['name' => 'Harina de trigo', 'bar_code' => '27004'],
+            ['name' => 'Harina de repostería', 'bar_code' => '27003', 'purchase_price' => '42.50', 'weight' => '1.000'],
+            ['name' => 'Harina de trigo', 'bar_code' => '27004', 'purchase_price' => '38.50', 'weight' => '1.000'],
             ['name' => 'Levadura fresca', 'bar_code' => '27005'],
             ['name' => 'Levadura seca', 'bar_code' => '27006'],
             ['name' => 'Royal', 'bar_code' => '27007'],
