@@ -5,7 +5,7 @@
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Control de Panadería: Órdenes de Compra</h1>
-        <a href="{{ route('purchase-orders.create') }}" class="btn btn-primary btn-sm">
+        <a href="{{ route('purchase_orders.create') }}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus-circle mr-1"></i> Nueva Orden de Compra
         </a>
     </div>
@@ -62,13 +62,13 @@
                                         <span class="badge badge-primary px-2 py-1">Generada</span>
                                     @elseif($order->status_order == 'sent')
                                         <span class="badge badge-info px-2 py-1">Enviada</span>
-                                    <@else
+                                    @else
                                         <span class="badge badge-secondary px-2 py-1">{{ $order->status_order }}</span>
                                     @endif
                                 </td>
                                 <td>
                                     <!-- Enlace directo al método Show que procesará los detalles individuales -->
-                                    <a href="{{ route('purchase-orders.show', $order->id) }}" class="btn btn-info btn-xs py-0 px-2" title="Ver Detalles">
+                                    <a href="{{ route('purchase_orders.show', $order->id) }}" class="btn btn-info btn-xs py-0 px-2" title="Ver Detalles">
                                         <i class="fas fa-eye text-xs"></i> Ver
                                     </a>
                                 </td>
@@ -77,7 +77,7 @@
                             <tr>
                                 <td colspan="8" class="text-muted py-3">No se han registrado órdenes de compra en el sistema todavía.</td>
                             </tr>
-                        @empty
+                        @endforelse
                     </tbody>
                 </table>
             </div>

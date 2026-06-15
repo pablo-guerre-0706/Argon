@@ -69,14 +69,15 @@
     <h6 class=" navbar-heading text-muted">Control de Panadería</h6>
     <!-- Navigation -->
     <ul class="navbar-nav mb-md-3">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url('purchase-orders/create') }}">
-                    <i class="fas fa-shopping-cart text-info"></i>Ordenes de compra
+        <li class="nav-item {{ Request::route()->named('purchase_orders.*') ? 'active' : '' }}">
+            <a class="nav-link {{ Request::route()->named('purchase_orders.*') ? 'active' : '' }}"
+                href="{{ route('purchase_orders.index') }}">
+                 <i class="fas fa-shopping-cart text-info"></i> Órdenes de compra
             </a>
         </li>
-        <li class="nav-item {{ Request::route()->named('raw-materials.*') ? 'active' : ''}}">
-            <a class="nav-link {{ Request::route()->named('raw-materials.*') ? 'active' : ''}}"
-                href="{{ route('raw-materials.index') }}" wire:navigate>
+        <li class="nav-item {{ Request::route()->named('raw_materials.*') ? 'active' : ''}}">
+            <a class="nav-link {{ Request::route()->named('raw_materials.*') ? 'active' : ''}}"
+                href="{{ route('raw_materials.index') }}" wire:navigate>
                 <i class="fas fa-boxes text-warning"></i>Catálogo de materias primas
             </a>
         </li>

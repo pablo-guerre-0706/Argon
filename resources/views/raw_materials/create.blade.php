@@ -10,7 +10,7 @@
                 <h5 class="text-white mb-0 small text-uppercase font-weight-bold">Nueva materia prima</h5>
             </div>
             <div class="card-body py-3">
-                <form action="{{ route('raw-materials.store') }}" method="POST">
+                <form action="{{ route('raw_materials.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
                         <label class="form-control-label small font-weight-bold">Nombre:</label>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center border-top pt-3">
-                        <a href="{{ route('raw-materials.index') }}" class="btn btn-outline-secondary btn-sm py-1 px-3 mr-2 w-auto mb-0" style="font-size: 11px; height: 30px;" wire:navigate>
+                        <a href="{{ route('raw_materials.index') }}" class="btn btn-outline-secondary btn-sm py-1 px-3 mr-2 w-auto mb-0" style="font-size: 11px; height: 30px;" wire:navigate>
                             Cancelar
                         </a>
                         <button type="submit" class="btn btn-success btn-sm py-1 px-3 w-auto mb-0" style="font-size: 11px; height: 30px;">

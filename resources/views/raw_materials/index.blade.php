@@ -6,7 +6,7 @@
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="text-white mb-0">Catálogo de materias primas</h1>
-        <a href="{{ route('raw-materials.create') }}" class="btn btn-success btn-sm px-3" wire:navigate>
+        <a href="{{ route('raw_materials.create') }}" class="btn btn-success btn-sm px-3" wire:navigate>
             <i class="fas fa-plus-circle mr-1"></i> Nueva materia prima
         </a>
     </div>

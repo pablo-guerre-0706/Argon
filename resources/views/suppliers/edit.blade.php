@@ -22,7 +22,7 @@
 
     <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST">
         @csrf 
-        @method('PUT') <!-- Directiva obligatoria para indicarle a Laravel que es una actualización -->
+        @method('PUT')
         <div class="card shadow-sm mb-4">
             <div class="card-header bg-warning text-dark py-2 font-weight-bold small text-uppercase">
                 Formulario de Actualización

@@ -39,7 +39,7 @@ class RawMaterialRequest extends FormRequest
             'weight' => ['required', 'numeric', 'min:0'],
             'unit_measure_id' => ['required', 'exists:units_measures,id'],
             'category_mat_id' => ['required', 'exists:categories_mat,id'],
-            'brand_id' => ['required', 'exists:brands']
+            'brand_id' => ['required', 'exists:brands,id']
         ];
     }
 }

@@ -5,7 +5,7 @@
 <div class="container py-4">
     <h1 class="mb-4">Nueva orden de compra</h1>
 
-    <form action="{{ route('purchase-orders.store') }}" method="POST">
+    <form action="{{ route('purchase_orders.store') }}" method="POST">
         @csrf 
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-primary text-white py-2">Datos generales de la orden de compra</div>
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-3 mb-2">
                         <label for="order_number" class="form-control-label small font-weight-bold">Número de orden:</label>
-                        <input type="text" name="order_number" class="form-control form-control-alternative form-control-sm" placeholder="Ej: OC-0001" required>
+                        <input type="text" name="order_number" class="form-control form-control-alternative form-control-sm" value="{{ $order_number }}" readonly required>
                     </div>
                     <div class="col-md-5 mb-2">
                         <label for="supplier_id" class="form-control-label small font-weight-bold">Proveedor:</label>
@@ -58,7 +58,7 @@
                                     <option value="">Seleccione...</option>
                                     @foreach ($raw_materials as $item)
                                         <option value="{{ $item->id }}"
-                                                data-price="{{ $item->price }}"
+                                                data-price="{{ $item->purchase_price }}"
                                                 data-brand="{{ $item->brand->name ?? 'N/A' }}"
                                                 data-unit="{{ $item->unit_measure->abbreviation ?? 'N/A' }}">
                                             {{ $item->name }}
@@ -73,10 +73,10 @@
                                 <input type="text" class="form-control form-control-sm txt-unit" readonly placeholder="-">
                             </td>
                             <td>
-                                <input type="number" step="0.001" name="ordered_quantity[]" class="form-control form-control-alternative form-control-sm text-right" placeholder="0.000" required>
+                                <input type="number" step="0.001" name="ordered_quantity[]" class="form-control class_cantidad text_right" placeholder="0.000" required>
                             </td>
                             <td>
-                                <input type="number" step="0.01" name="unit_cost[]" class="form-control form-control-alternative form-control-sm text-right" placeholder="0.01" required>
+                                <input type="number" step="0.01" name="unit_cost[]" class="form-control class_costo_unitario" placeholder="0.01" required>
                             </td>
                             <td class="text-center align-middle">
                                 <button type="button" class="btn btn-link text-danger p-0 m-0 btn_eliminar_fila" style="display: none;">
@@ -156,20 +156,21 @@ $(document).ready(function() {
     });
 
     function calcularTotales() {
-        let subtotal = 0;
+        let subtotalGeneral = 0;
         $('#tabla_materia_prima tr').each(function() {
             let qty = parseFloat($(this).find('input[name="ordered_quantity[]"]').val()) || 0;
             let cost = parseFloat($(this).find('input[name="unit_cost[]"]').val()) || 0;
-            subtotal += qty * cost;
+            let subtotalFila = qty * cost;
+            subtotalGeneral += subtotalFila;
         });
+    
+        let tax = subtotalGeneral * 0.15;
+        let total = subtotalGeneral + tax;
 
-        let tax = subtotal * 0.15;
-        let total = subtotal + tax;
-
-        $('#txt_subtotal').text(subtotal.toFixed(2));
+        $('#txt_subtotal').text(subtotalGeneral.toFixed(2));
         $('#text_tax').text(tax.toFixed(2));
         $('#txt_total').text(total.toFixed(2));
-        $('#hidden_subtotal').val(subtotal.toFixed(2));
+        $('#hidden_subtotal').val(subtotalGeneral.toFixed(2));
         $('#hidden_tax').val(tax.toFixed(2));
         $('#hidden_total').val(total.toFixed(2));
      }

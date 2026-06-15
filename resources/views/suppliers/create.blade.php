@@ -26,7 +26,6 @@
             </div>
             <div class="card-body py-3">
                 <div class="row">
-                    <!-- Campo: Nombre -->
                     <div class="col-md-6 mb-3">
                         <label for="name" class="form-control-label small font-weight-bold">Nombre de la Empresa:</label>
                         <input type="text" name="name" id="name" class="form-control form-control-alternative form-control-sm" value="{{ old('name') }}" placeholder="Ej: Molinos del Centro S.A." required>

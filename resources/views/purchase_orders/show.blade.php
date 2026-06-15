@@ -5,7 +5,7 @@
 <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Detalle de Orden de Compra: {{ $purchase_order->order_number }}</h1>
-        <a href="{{ route('purchase-orders.index') }}" class="btn btn-outline-secondary btn-sm">
+        <a href="{{ route('purchase_orders.index') }}" class="btn btn-outline-secondary btn-sm">
             <i class="fas fa-arrow-left mr-1"></i> Volver al Historial
         </a>
     </div>
