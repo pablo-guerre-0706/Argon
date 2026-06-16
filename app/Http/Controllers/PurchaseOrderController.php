@@ -13,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PurchaseOrderController extends Controller
@@ -37,7 +38,9 @@ class PurchaseOrderController extends Controller
     {
         DB::beginTransaction();
         try {
-        $purchase_order = PurchaseOrder::create($request->validated());
+            $data = $request->validated();
+            $data['user_id'] = auth::id();
+            $purchase_order = PurchaseOrder::create($data);
         foreach ($request->raw_material_id as $index => $materialId) {
             $purchase_order->purchase_order_details()->create([
                 'raw_material_id'  => $materialId,

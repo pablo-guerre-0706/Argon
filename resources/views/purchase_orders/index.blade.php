@@ -67,7 +67,6 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <!-- Enlace directo al método Show que procesará los detalles individuales -->
                                     <a href="{{ route('purchase_orders.show', $order->id) }}" class="btn btn-info btn-xs py-0 px-2" title="Ver Detalles">
                                         <i class="fas fa-eye text-xs"></i> Ver
                                     </a>
