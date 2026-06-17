@@ -80,7 +80,9 @@ Route::middleware('auth')->group(function () {
 
     // Rutas de Panaderia (compras)
     Route::resource('/raw_materials', RawMaterialController::class);
-    Route::resource('/purchase_orders', PurchaseOrderController::class)->only(['index', 'create', 'store', 'show']);
+    Route::middleware(['permission:crear_orden_compra'])->group(function () {
+        Route::resource('/purchase_orders', PurchaseOrderController::class)->only(['index', 'create', 'store', 'show']);
+    });
     Route::resource('/suppliers', SupplierController::class);
     Route::middleware(['role:Administrador'])->group(function () {
         Route::resource('/users', UserController::class)->only(['index', 'create', 'store', 'update']);
