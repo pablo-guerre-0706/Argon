@@ -11,6 +11,7 @@ use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PurchaseOrderDetailController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 use App\Livewire\Products\ProductList;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/raw_materials', RawMaterialController::class);
     Route::resource('/purchase_orders', PurchaseOrderController::class)->only(['index', 'create', 'store', 'show']);
     Route::resource('/suppliers', SupplierController::class);
+    Route::middleware(['role:Administrador'])->group(function () {
+        Route::resource('/users', UserController::class)->only(['index', 'create', 'store', 'update']);
+    });
 });
 
 

@@ -69,11 +69,20 @@
     <h6 class=" navbar-heading text-muted">Control de Panadería</h6>
     <!-- Navigation -->
     <ul class="navbar-nav mb-md-3">
+        @role('Administrador')
+        <li class="nav-item {{ Request::route()->named('users.*') ? 'active' : '' }}">
+            <a class="nav-link {{ Request::route()->named('users.*') ? 'active' : '' }}"
+                href="{{ route('users.index') }}" wire:navigate>
+                <i class="fas fa-users-cog text-purple"></i> Gestión de Usuarios
+            </a>
+        </li>
+        @endrole
         <li class="nav-item {{ Request::route()->named('purchase_orders.*') ? 'active' : '' }}">
             <a class="nav-link {{ Request::route()->named('purchase_orders.*') ? 'active' : '' }}"
                 href="{{ route('purchase_orders.index') }}">
                  <i class="fas fa-shopping-cart text-info"></i> Órdenes de compra
             </a>
+        </li>
         </li>
         <li class="nav-item {{ Request::route()->named('raw_materials.*') ? 'active' : ''}}">
             <a class="nav-link {{ Request::route()->named('raw_materials.*') ? 'active' : ''}}"

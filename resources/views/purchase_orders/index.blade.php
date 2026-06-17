@@ -9,7 +9,6 @@
             <i class="fas fa-plus-circle mr-1"></i> Nueva Orden de Compra
         </a>
     </div>
-
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show small py-2" role="alert">
             <i class="fas fa-check-circle mr-1"></i> {{ session('success') }}
@@ -18,7 +17,6 @@
             </button>
         </div>
     @endif
-
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show small py-2" role="alert">
             <i class="fas fa-exclamation-circle mr-1"></i> {{ session('error') }}

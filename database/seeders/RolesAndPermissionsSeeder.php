@@ -32,7 +32,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $admin->givePermissionTo(Permission::all());
 
         $resp_compras = Role::firstOrCreate(['name' => 'Responsable de compras']);
-        $resp_compras->givePermissionTo([1]);
+        $resp_compras->givePermissionTo([$p1]);
         
         $resp_produccion = Role::firstOrCreate(['name' => 'Responsable de produccion']);
         $resp_produccion->givePermissionTo([$p3, $p5]);
